@@ -1,0 +1,391 @@
+/* --- Variables CSS para Modos de Tema y Paleta de Colores --- */
+:root {
+    /* Variables de paleta de colores base */
+    --color-primary: #367a5e;
+    --color-secondary-dark: #34495E;
+    --color-accent: #2f5e85;
+    --color-background-light: #ECF0F1;
+    --color-text-main: #333;
+    --color-text-secondary: #7F8C8D;
+    --color-text-white: #FFFFFF;
+    --color-light-gray: #e9ecef;
+    --color-card-background: #ffffff;
+    --color-card-border: #e0e0e0;
+    --color-border: #DDEEEE;
+    --color-hover-light: #F0F0F0;
+
+    /* Variables de tema - Modo Claro (valores por defecto) */
+    --main-bg: #FFFFFF;
+    --main-text: #212529;
+    --card-bg: #FFFFFF;
+    --card-border: #DEE2E6;
+    --link-color: #0D6EFD;
+    --link-hover-color: #0A58CA;
+
+    /* Para elementos que son oscuros por diseño (ej. navbar, footer) */
+    --dark-elements-bg: var(--color-secondary-dark);
+    --dark-elements-text: var(--color-text-white);
+
+    /* Variables para filas de tabla (striped/hover) */
+    --light-striped-bg: #f2f2f2;
+    --light-hover-bg: #e9ecef;
+
+    /* Override de variables de Bootstrap para integrar tu paleta */
+    --bs-primary: var(--color-primary);
+    --bs-secondary: var(--color-secondary-dark);
+    --bs-dark: var(--color-secondary-dark);
+    --bs-light: var(--color-background-light);
+    --bs-warning: var(--color-accent);
+    --bs-text-secondary: var(--color-text-secondary);
+    --bs-body-color: var(--main-text);
+    --bs-body-bg: var(--main-bg);
+}
+
+/* --- MODO OSCURO (Sobrescribe los valores del modo claro) --- */
+[data-bs-theme="dark"] {
+    --main-bg: #212529;
+    --main-text: #F8F9FA;
+    --card-bg: #343A40;
+    --card-border: #495057;
+    --link-color: #6DAFFB;
+    --link-hover-color: #3B82F6;
+
+    /* Para elementos que eran oscuros por diseño y queremos que se inviertan a claro en modo oscuro */
+    --dark-elements-bg: #F8F9FA;
+    --dark-elements-text: #212529;
+
+    /* Variables para filas de tabla (striped/hover) en modo oscuro */
+    --light-striped-bg: #3a3f44;
+    --light-hover-bg: #3e444a;
+
+    /* Variables de Bootstrap para colores de texto secundario/terciario en modo oscuro */
+    --bs-secondary-color: #ADB5BD;
+    --bs-tertiary-color: #6C757D;
+}
+
+/* --- Estilos Generales --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#theme-wrapper {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--color-primary) !important;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    padding: 0.7em 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-text);
+    transition: color 0.3s ease;
+}
+
+main.container, main.container-fluid {
+    background-color: var(--card-bg);
+    color: var(--main-text);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LA TABLA DEL HORARIO EN INDEX.HTML --- */
+
+.table-container {
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    --bs-table-color: var(--main-text);
+    --bs-table-bg: var(--card-bg);
+    --bs-table-border-color: var(--card-border);
+    --bs-table-striped-bg: var(--light-striped-bg);
+    --bs-table-striped-color: var(--main-text);
+    --bs-table-hover-bg: var(--light-hover-bg);
+    --bs-table-hover-color: var(--main-text);
+    margin-bottom: 0;
+    transition: --bs-table-color 0.3s ease, --bs-table-bg 0.3s ease, --bs-table-border-color 0.3s ease;
+}
+
+.table thead th {
+    background-color: var(--dark-elements-bg);
+    color: var(--dark-elements-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    border-color: var(--card-border);
+    padding: 0.85rem;
+    vertical-align: middle;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.table tbody td {
+    border: 1px solid var(--card-border);
+    padding: 0.85rem;
+    vertical-align: middle;
+    text-align: center;
+    background-color: var(--card-bg);
+    color: var(--main-text);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.table thead th:first-child { border-top-left-radius: var(--bs-border-radius); }
+.table thead th:last-child { border-top-right-radius: var(--bs-border-radius); }
+.table tbody tr:last-child td:first-child { border-bottom-left-radius: var(--bs-border-radius); }
+.table tbody tr:last-child td:last-child { border-bottom-right-radius: var(--bs-border-radius); }
+
+/* --- FIN ESTILOS ESPECÍFICOS PARA LA TABLA DEL HORARIO --- */
+
+
+/* Estilos de la tabla responsive para móviles (con data-label) */
+@media (max-width: 767.98px) {
+    .table td {
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+        color: var(--main-text);
+    }
+    .table thead {
+        display: none;
+    }
+}
+
+/* Estilos para la sección "Sobre Mí" */
+.presentacion img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 4px solid var(--color-secondary-dark);
+}
+
+.presentacion h2 {
+    color: var(--main-text);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Estilos para list-group-item (Avisos y Materias) */
+.list-group-item {
+    background-color: var(--card-bg);
+    color: var(--main-text);
+    border-color: var(--card-border);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#avisos .list-group-item {
+    border-left: 5px solid var(--color-accent);
+    padding: 15px 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#avisos .list-group-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#avisos .list-group-item strong {
+    color: var(--main-text);
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+/* Ícono personalizado para avisos */
+#avisos .list-group-item:before {
+    content: '\f0f3';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 1.8em;
+    color: var(--color-accent);
+    margin-right: 10px;
+}
+
+
+/* --- NUEVOS ESTILOS PARA LA PÁGINA DE MATERIAS/DISENO_WEB.HTML --- */
+
+.custom-card-header.card {
+    border: 1px solid var(--dark-elements-bg);
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+.custom-card-header .card-header {
+    background-color: var(--dark-elements-bg);
+    color: var(--dark-elements-text);
+    border-bottom: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-card-header .card-header h1 {
+    color: var(--dark-elements-text);
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+}
+
+.custom-card-section.card {
+    border: 1px solid var(--card-border);
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+.custom-card-section .card-header {
+    background-color: var(--dark-elements-bg);
+    color: var(--dark-elements-text);
+    border-bottom: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-card-section .card-header h2 {
+    color: var(--dark-elements-text);
+    margin-bottom: 0;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.custom-card-section .card-body {
+    background-color: var(--card-bg);
+    color: var(--main-text);
+    padding: 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-card-section .card-body ul li {
+    margin-bottom: 0.5rem;
+    color: var(--main-text);
+    transition: color 0.3s ease;
+}
+.custom-card-section .card-body ul {
+    margin-bottom: 0;
+}
+
+.custom-card-section .card-body a {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+.custom-card-section .card-body a:hover {
+    color: var(--link-hover-color);
+}
+
+.custom-card-section .card-body .btn-outline-dark {
+    border-color: var(--color-secondary-dark);
+    color: var(--color-secondary-dark);
+    transition: all 0.3s ease;
+}
+.custom-card-section .card-body .btn-outline-dark:hover {
+    background-color: var(--color-secondary-dark);
+    color: white;
+}
+
+.custom-card-section .card-body .btn-outline-warning {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+}
+.custom-card-section .card-body .btn-outline-warning:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.custom-card-section .card-body .btn-outline-info {
+    border-color: #0dcaf0;
+    color: #0dcaf0;
+    transition: all 0.3s ease;
+}
+.custom-card-section .card-body .btn-outline-info:hover {
+    background-color: #0dcaf0;
+    color: white;
+}
+
+.custom-card-section .card-body .btn .fa-github,
+.custom-card-section .card-body .btn .fa-globe,
+.custom-card-section .card-body .btn .fa-file-alt {
+    color: inherit;
+}
+
+
+.materia-diseno .enlaces-menu ul li a .fa-github { color: var(--color-secondary-dark); }
+.materia-diseno .enlaces-menu ul li a .fa-calendar-alt { color: var(--color-primary); }
+.materia-diseno .enlaces-menu ul li a .fa-globe { color: var(--color-accent); }
+.materia-diseno .enlaces-menu ul li a .fa-tasks { color: var(--color-primary); }
+.materia-diseno .enlaces-menu ul li a .fa-book { color: var(--color-primary); }
+.materia-diseno .seccion-contenido .list-group-item .fa-laptop-code { color: var(--color-primary); }
+
+
+.seccion-contenido h2 {
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--main-text);
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.seccion-contenido .list-group-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-curso {
+    color: var(--color-text-secondary);
+    font-size: 0.9em;
+    background-color: var(--bs-light);
+    border-top: 1px solid var(--card-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
